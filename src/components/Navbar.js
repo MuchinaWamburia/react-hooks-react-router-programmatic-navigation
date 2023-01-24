@@ -10,8 +10,21 @@ const linkStyles = {
   color: "white",
 };
 
-function Navbar({ setIsLoggedIn }) {
+function Navbar({ setIsLoggedIn,onLogout }) {
   const history = useHistory();
+
+  function handleClick() {
+    // logout the user
+    onLogout();
+    // then navigate them to the login page
+    history.push("/login");
+  }
+
+  return (
+    <nav>
+      <button onClick={handleClick}>Logout</button>
+    </nav>
+  )
 
   function handleLogout() {
     setIsLoggedIn(false);
